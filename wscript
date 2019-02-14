@@ -180,6 +180,8 @@ def configure(ctx):
         # the cflags properly set
         #ctx.env.CXXFLAGS += [ '-I/usr/local/include' ]
 
+        ctx.env.CXXFLAGS += ['-mmacosx-version-min=10.10']
+
         if ctx.options.ARCH == 'i386':
             ctx.env.CXXFLAGS += ['-arch', 'i386']
             ctx.env.LINKFLAGS += ['-arch', 'i386']
