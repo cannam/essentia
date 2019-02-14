@@ -123,9 +123,19 @@ static Vamp::PluginAdapter<Pitch> aPitch;
 static Vamp::PluginAdapter<DistributionShape> aDistributionShape;
 static Vamp::PluginAdapter<BarkShape> aBarkShape;
 
+class Gloub {
+public:
+  Gloub() {
+    essentia::init();
+  }
+};
+
 ESSENTIA_API
 const VampPluginDescriptor *vampGetPluginDescriptor(unsigned int version,
                                                     unsigned int index) {
+
+  static Gloub goulou;
+
   if (version < 1) return 0;
 
   switch (index) {
@@ -186,14 +196,5 @@ const VampPluginDescriptor *vampGetPluginDescriptor(unsigned int version,
   }
 }
 
-
-class Gloub {
-public:
-  Gloub() {
-    essentia::init();
-  }
-};
-
-static Gloub goulou;
 
 //int main() { essentia::init(); return 0; }
